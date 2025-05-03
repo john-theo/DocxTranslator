@@ -1,0 +1,24 @@
+[project]
+name = "docxtranslator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "ipywidgets>=8.1.6",
+    "notebook>=7.4.1",
+    "loguru>=0.7.3",
+    "openai>=1.76.2",
+    "python-docx>=1.1.2",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+    "streamlit>=1.45.0",
+    "tqdm>=4.67.1",
+    "typer>=0.15.3",
+    "watchdog>=6.0.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
