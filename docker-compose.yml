@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  docx-translator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - ~/.cache/.docx_translator:/app/.cache/.docx_translator
+    env_file:
+      - .env
+    environment:
+      # Streamlit specific settings
+      - STREAMLIT_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_HEADLESS=true
