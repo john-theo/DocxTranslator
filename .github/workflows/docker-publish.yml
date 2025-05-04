@@ -2,12 +2,8 @@ name: Docker Hub Publish
 
 on:
   push:
-    # Remove branch trigger for main
-    # branches: [ main ]
-    # Publish semver tags as releases
-    tags: [ 'v*.*.*' ]
-  # pull_request:
-  #   branches: [ main ]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 env:
   # Use docker.io for Docker Hub

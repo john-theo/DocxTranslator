@@ -1,57 +1,58 @@
-# name: Publish Python Package
+name: Publish Python Package
 
-# on:
-#   push:
-#     tags:
-#       - 'v*'  # Push events to tags matching v*, i.e. v1.0, v20.15.10
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       id-token: write  # For PyPI trusted publishing
-#       contents: write  # For creating GitHub releases
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # For PyPI trusted publishing
+      contents: write  # For creating GitHub releases
 
-#     steps:
-#     - uses: actions/checkout@v4
-#       with:
-#         fetch-depth: 0  # Fetch all history for tags and branches
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for tags and branches
 
-#     - name: Set up Python
-#       uses: actions/setup-python@v4
-#       with:
-#         python-version: '3.12'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
 
-#     - name: Install dependencies
-#       run: |
-#         python -m pip install --upgrade pip
-#         pip install build twine
-#         pip install --upgrade pkginfo
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+        pip install --upgrade pkginfo
+        pip install twine --upgrade
 
-#     - name: Extract version from tag
-#       id: get_version
-#       run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+    - name: Extract version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
       
-#     - name: Update version in pyproject.toml
-#       run: |
-#         sed -i "s/version = \"[0-9]*\.[0-9]*\.[0-9]*\"/version = \"$VERSION\"/" pyproject.toml
-#         cat pyproject.toml
+    - name: Update version in pyproject.toml
+      run: |
+        sed -i "s/version = \"[0-9]*\.[0-9]*\.[0-9]*\"/version = \"$VERSION\"/" pyproject.toml
+        cat pyproject.toml
 
-#     - name: Build package
-#       run: python -m build
+    - name: Build package
+      run: python -m build
 
-#     - name: Publish package to PyPI
-#       uses: pypa/gh-action-pypi-publish@v1.8.11
-#       with:
-#         password: ${{ secrets.PYPI_API_TOKEN }}
+    - name: Publish package to PyPI
+      uses: pypa/gh-action-pypi-publish@v1.8.11
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
 
-#     - name: Create GitHub Release
-#       uses: softprops/action-gh-release@v1
-#       with:
-#         name: Release v${{ env.VERSION }}
-#         draft: false
-#         prerelease: false
-#         generate_release_notes: true
-#         files: |
-#           dist/*.whl
-#           dist/*.tar.gz 
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release v${{ env.VERSION }}
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        files: |
+          dist/*.whl
+          dist/*.tar.gz 
