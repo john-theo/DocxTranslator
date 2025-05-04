@@ -1,5 +1,4 @@
 import os
-import sys
 import tempfile
 import argparse
 import threading
@@ -19,8 +18,8 @@ for name, l in logging.root.manager.loggerDict.items():
 # Load environment variables from .env file
 load_dotenv()
 
-# Import from docxtranslator.translator package
-from docxtranslator.translator import (
+# Import from docx_translator.translator package
+from docx_translator.translator import (
     setup_openai_client,
     process_document,
     DEFAULT_MODEL,
@@ -242,7 +241,7 @@ def translation_thread_func(params, queue):
 
         # Set the global model if different from default
         if params["model"] != DEFAULT_MODEL:
-            from docxtranslator import translator
+            from docx_translator import translator
 
             translator.DEFAULT_MODEL = params["model"]
 
@@ -325,7 +324,7 @@ def translation_thread_func(params, queue):
             progress = min(current / total, 1.0) if total > 0 else 0
 
             # Get token counts from global variables in translator module
-            from docxtranslator import translator
+            from docx_translator import translator
 
             api_tokens = translator.total_tokens_received
             cached_tokens = translator.total_cached_tokens

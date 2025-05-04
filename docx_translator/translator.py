@@ -9,12 +9,11 @@ from typing import List, Optional, Set, Dict, Any, Tuple
 
 from docx import Document
 from docx.enum.text import WD_BREAK
-import openai
+from docx.shared import RGBColor
 from openai import OpenAI
 from openai import AsyncOpenAI
 from loguru import logger
 from tqdm import tqdm
-from dotenv import load_dotenv
 
 # Constants
 DEFAULT_MODEL = "gpt-4-turbo"
@@ -549,10 +548,17 @@ def add_translation_to_paragraph(paragraph, translated_text: str) -> None:
         paragraph: The paragraph object to add translation to
         translated_text: The translated text to add
     """
-    # Add a line break and then the translation
+    # Add a line break and then the separator line
     run = paragraph.add_run()
     run.add_break(WD_BREAK.LINE)  # Add a line break
-    paragraph.add_run(translated_text)
+
+    # Add separator line
+    separator_run = paragraph.add_run("------")
+    separator_run.add_break(WD_BREAK.LINE)  # Add another line break after separator
+
+    # Add translation with gray color
+    translation_run = paragraph.add_run(translated_text)
+    translation_run.font.color.rgb = RGBColor(128, 128, 128)  # Set to gray color
 
 
 def count_translatable_elements(doc: Document, target_styles_set: Set[str]) -> int:

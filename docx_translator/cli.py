@@ -8,7 +8,7 @@ import typer
 from dotenv import load_dotenv
 from loguru import logger
 
-from docxtranslator.translator import (
+from docx_translator.translator import (
     setup_openai_client,
     process_document,
     clear_translation_caches,
@@ -229,11 +229,11 @@ def serve(
     try:
         import streamlit.web.bootstrap as bootstrap
         import importlib.resources
-        import docxtranslator
+        import docx_translator
 
         # Get the absolute path to the streamlit_app module in the package
         streamlit_app_path = str(
-            importlib.resources.files("docxtranslator") / "streamlit_app.py"
+            importlib.resources.files("docx_translator") / "streamlit_app.py"
         )
 
         if not os.path.exists(streamlit_app_path):
