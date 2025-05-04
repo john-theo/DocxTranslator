@@ -13,7 +13,7 @@ env:
   # Use docker.io for Docker Hub
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: johndope/docx-translator
 
 jobs:
   build-and-push:
