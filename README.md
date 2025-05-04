@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=6eed4c&height=300&section=header&text=Docx%20Translator&fontSize=90&fontAlignY=40&animation=fadeIn&desc=One-click%20immersive%20translation%20of%20Word%20docx%20files%20with%20beautiful%20GUI)
+![header](https://capsule-render.vercel.app/api?type=waving&color=6eed4c&height=300&section=header&text=Docx%20Translator&fontSize=90&fontAlignY=40&animation=fadeIn&desc=Immersive%20translation%20of%20Word%20docx%20files)
 
 <p align="center"> 
   <a href="README.md">English</a> 

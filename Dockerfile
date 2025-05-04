@@ -1,5 +1,8 @@
 FROM python:3.12-slim
 
+# Add labels for container metadata
+LABEL maintainer="John Dope <hi@zxh.cool>"
+
 WORKDIR /app
 
 # Install dependencies
