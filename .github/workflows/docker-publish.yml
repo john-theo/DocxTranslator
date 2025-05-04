@@ -2,7 +2,8 @@ name: Docker Hub Publish
 
 on:
   push:
-    branches: [ main ]
+    # Remove branch trigger for main
+    # branches: [ main ]
     # Publish semver tags as releases
     tags: [ 'v*.*.*' ]
   pull_request:
@@ -17,7 +18,7 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    # Only run on main branch or tags
+    # Only run on tags
     if: github.event_name != 'pull_request'
     permissions:
       contents: read
