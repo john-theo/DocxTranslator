@@ -31,7 +31,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/docxtranslator:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/docxtranslator:${{ steps.extract_version.outputs.VERSION }}
-          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/docxtranslator:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/docxtranslator:buildcache,mode=max 
+            ${{ secrets.DOCKERHUB_USERNAME }}/docx-translator:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/docx-translator:${{ steps.extract_version.outputs.VERSION }}
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/docx-translator:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/docx-translator:buildcache,mode=max 

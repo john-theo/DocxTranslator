@@ -165,7 +165,7 @@ with st.sidebar:
             
             Translations are added below the original text in each paragraph.
             
-            For command line usage, check out the [GitHub repository](https://github.com/yourusername/DocxTranslator).
+            For command line usage, check out the [GitHub repository](https://github.com/john-theo/DocxTranslator.git).
             """
         )
 
