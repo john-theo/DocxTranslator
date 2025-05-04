@@ -19,9 +19,8 @@ for name, l in logging.root.manager.loggerDict.items():
 # Load environment variables from .env file
 load_dotenv()
 
-# Add parent directory to path to import from main.py
-sys.path.append(str(Path(__file__).parent.absolute()))
-from main import (
+# Import from docxtranslator.translator package
+from docxtranslator.translator import (
     setup_openai_client,
     process_document,
     DEFAULT_MODEL,
@@ -243,9 +242,9 @@ def translation_thread_func(params, queue):
 
         # Set the global model if different from default
         if params["model"] != DEFAULT_MODEL:
-            import main
+            from docxtranslator import translator
 
-            main.DEFAULT_MODEL = params["model"]
+            translator.DEFAULT_MODEL = params["model"]
 
         # Clear the cache if requested
         if params["clear_cache"] and params["use_cache"]:
@@ -264,9 +263,6 @@ def translation_thread_func(params, queue):
                     )
             except Exception as e:
                 queue.put(("warning", f"Failed to clear cache: {str(e)}"))
-
-        # Import things we need from main module
-        import main
 
         # Create a cancellation checker function
         stop_requested = False
@@ -328,9 +324,11 @@ def translation_thread_func(params, queue):
             # Update progress through queue with normalized progress (0-1)
             progress = min(current / total, 1.0) if total > 0 else 0
 
-            # Get token counts from global variables in main module
-            api_tokens = main.total_tokens_received
-            cached_tokens = main.total_cached_tokens
+            # Get token counts from global variables in translator module
+            from docxtranslator import translator
+
+            api_tokens = translator.total_tokens_received
+            cached_tokens = translator.total_cached_tokens
 
             # Show more detailed progress with current/total, percentage
             # Check if we have a previously calculated ETA stored in session state

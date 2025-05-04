@@ -1,20 +1,43 @@
 [project]
-name = "docxtranslator"
+name = "docx-translator"
 version = "0.1.0"
-description = "Add your description here"
+description = "Translate DOCX files using OpenAI-compatible models"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.9"
+authors = [
+    {name = "John Dope", email = "hi@zxh.cool"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
 dependencies = [
     "loguru>=0.7.3",
     "openai>=1.76.2",
     "python-docx>=1.1.2",
     "python-dotenv>=1.1.0",
     "requests>=2.32.3",
-    "streamlit>=1.45.0",
+    "streamlit>=1.24.0,<1.29.0",
     "tqdm>=4.67.1",
     "typer>=0.15.3",
     "watchdog>=6.0.0",
 ]
+
+[project.scripts]
+dt = "docx_translator.cli:app"
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/docxtranslator"
+"Bug Tracker" = "https://github.com/yourusername/docxtranslator/issues"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["docx_translator"]
+include-package-data = true
 
 [[tool.uv.index]]
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
