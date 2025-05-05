@@ -44,7 +44,7 @@ DocxTranslator is a tool to translate Word documents (.docx) using OpenAI's API.
 <img src="./static/app.jpg">
 <img src="./static/demo.jpg">
 
-> ⤷ If these images breaks, you can [view them on Github](https://github.com/john-theo/docx-translator)
+> ⤷ If these images don't display, you can [view them on Github](https://github.com/john-theo/docx-translator)
 
 ## ✨ Features
 
