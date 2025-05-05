@@ -1,6 +1,6 @@
 [project]
 name = "docx_translator"
-version = "0.1.10"
+version = "0.2.0"
 description = "🌍📄✨ Immersive translation of Word docx files"
 readme = "README.md"
 requires-python = ">=3.9"
