@@ -28,11 +28,11 @@ dependencies = [
 dt = "docx_translator.cli:app"
 
 [project.urls]
-"Homepage" = "https://github.com/yourusername/docxtranslator"
-"Bug Tracker" = "https://github.com/yourusername/docxtranslator/issues"
+"Homepage" = "https://github.com/john-theo/docx-translator"
+"Bug Tracker" = "https://github.com/john-theo/docx-translator/issues"
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["twine==6.0.1", "setuptools==75.6.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
