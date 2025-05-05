@@ -13,7 +13,7 @@
   ·
   <a href="/docs/README_kr.md">한국어</a> 
   ·
-  <a href="/docs/README_pt-br.md">Português</a>
+  <a href="/docs/README_pt.md">Português</a>
 </p>
 
 > Looking for someone to translate this README.
@@ -26,8 +26,25 @@
 
 DocxTranslator is a tool to translate Word documents (.docx) using OpenAI's API. It preserves the original document formatting and adds translations below each paragraph.
 
+<p align="center">
+  <a href="https://pypi.org/project/docx-translator/">
+    <img src="https://img.shields.io/pypi/v/docx-translator?color=blue&logo=pypi&logoColor=white" alt="PyPI">
+  </a>
+  <a href="https://hub.docker.com/r/johndope/docx-translator">
+    <img src="https://img.shields.io/docker/pulls/johndope/docx-translator?color=blue&logo=docker&logoColor=white" alt="Docker Hub">
+  </a>
+  <a href="https://github.com/john-theo/docx-translator">
+    <img src="https://img.shields.io/github/stars/john-theo/docx-translator" alt="GitHub stars">
+  </a>
+  <a href="https://github.com/john-theo/docx-translator">
+    <img src="https://img.shields.io/github/license/john-theo/docx-translator?color=green" alt="License">
+  </a>
+</p>
+
 <img src="./static/app.jpg">
 <img src="./static/demo.jpg">
+
+> ⤷ If these images breaks, you can [view them on Github](https://github.com/john-theo/docx-translator)
 
 ## ✨ Features
 
@@ -42,8 +59,20 @@ DocxTranslator is a tool to translate Word documents (.docx) using OpenAI's API.
 
 ## 📦 Installation
 
+### Via Pip
 ```bash
 pip install docx-translator
+```
+
+### Via Docker
+You can use the prebuilt Docker image to get started immediately:
+
+```bash
+# Pull the prebuilt image
+docker pull johndope/docx-translator:latest
+
+# Run with your API key
+docker run -p 8501:8501 -e OPENAI_API_KEY=your-api-key johndope/docx-translator
 ```
 
 ## 🖥️ Command Line Usage
@@ -91,6 +120,18 @@ dt serve
 ## 🐳 Docker Usage
 
 You can run DocxTranslator using Docker:
+
+### Option 1: Using prebuilt image (recommended)
+
+```bash
+# Pull the prebuilt image
+docker pull johndope/docx-translator:latest
+
+# Run with your API key
+docker run -p 8501:8501 -e OPENAI_API_KEY=your-api-key johndope/docx-translator
+```
+
+### Option 2: Using docker-compose
 
 ```bash
 # Create a .env file with your OpenAI API key and other settings

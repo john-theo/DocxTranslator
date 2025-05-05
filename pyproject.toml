@@ -1,7 +1,7 @@
 [project]
 name = "docx_translator"
 version = "0.1.9"
-description = "Translate DOCX files using OpenAI-compatible models"
+description = "🌍📄✨ Immersive translation of Word docx files"
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [
